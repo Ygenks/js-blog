@@ -38,7 +38,5 @@ fetch(request)
 .then((response) => response.json())
 .then(function(feed) {
 
-  for(var article of feed.articles) {
-  	createEntry(article);
-  }
+    feed.articles.filter((article) => article.description != null).map(createEntry);
 });
