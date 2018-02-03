@@ -1,8 +1,7 @@
 function createEntry(article) {
 
-    var entry = document.createElement("div");
-    entry.setAttribute("id", "entry");
-
+    var entry = document.createElement("figure");
+    entry.className = "entry";
 
     var header = document.createElement("h3");
     var link = document.createElement("a");
@@ -13,7 +12,9 @@ function createEntry(article) {
     image.src = article.urlToImage;
     image.alt = article.title;
 
-    var description = document.createTextNode(article.description);
+    var description = document.createElement("figcaption");
+    description.className = "caption";
+    description.textContent = article.description;
 
     header.appendChild(link);
     entry.appendChild(header);
@@ -32,6 +33,5 @@ var request = new Request(url);
 fetch(request)
     .then((response) => response.json())
     .then(function(feed) {
-
         feed.articles.filter((article) => article.description != null).map(createEntry);
     });
