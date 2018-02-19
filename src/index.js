@@ -1,3 +1,5 @@
+import '../pages.css'
+
 function createEntry(article) {
 
     var entry = document.createElement("figure");
@@ -22,6 +24,10 @@ function createEntry(article) {
     entry.appendChild(description);
 
     document.body.appendChild(entry);
+}
+
+if (process.env.NODE_ENV !== 'production') {
+    console.log('Development mode');
 }
 
 var url = 'https://newsapi.org/v2/top-headlines?' +
