@@ -67,7 +67,8 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1);
+"use strict";
+
 
 function createEntry(article) {
 
@@ -95,31 +96,17 @@ function createEntry(article) {
     document.body.appendChild(entry);
 }
 
-var url = 'https://newsapi.org/v2/top-headlines?' +
-    'country=us&' +
-    'apiKey=c292fa2e031e40d6b871c85a2fc8d258';
+var url = 'https://newsapi.org/v2/top-headlines?' + 'country=us&' + 'apiKey=c292fa2e031e40d6b871c85a2fc8d258';
 
 var request = new Request(url);
 
-fetch(request)
-    .then((response) => response.json())
-    .then(function(feed) {
-        feed.articles.filter((article) => article.description != null).map(createEntry);
-    });
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-
-exports.default = function () {};
-
-module.exports = exports["default"];
+fetch(request).then(function (response) {
+    return response.json();
+}).then(function (feed) {
+    feed.articles.filter(function (article) {
+        return article.description != null;
+    }).map(createEntry);
+});
 
 /***/ })
 /******/ ]);

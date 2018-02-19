@@ -1,5 +1,3 @@
-require("babel-register");
-
 function createEntry(article) {
 
     var entry = document.createElement("figure");
